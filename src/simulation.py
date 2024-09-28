@@ -1,4 +1,5 @@
-from utils import SIMULATION_PARAMS, init_agents, init_lattice, draw_graph
+from utils import SIMULATION_PARAMS, init_agents, init_lattice, draw_graph, distribute_payoff
+from agent.agent import Agent
 
 
 '''
@@ -10,14 +11,29 @@ def simulate():
     agents = init_agents()
 
     # init lattice with agents
-    graph = init_lattice(agents)
+    G = init_lattice(agents)
 
-    # draw the graph
-    draw_graph(graph)
+    # TEST: draw the graph
+    draw_graph(G)
 
-    # for step in range(SIMULATION_PARAMS['generations']):
-    #     # for each agent, play with all its neighbors
-    #     graph.neighbors()
+    for step in range(SIMULATION_PARAMS['generations']):
+        # for each agent, play with all its neighbors
+        for node in G.nodes:
+            agent: Agent = G.nodes[node]['agent']
+            neighbors = G.neighbors(node)
+
+            # todo: track which agents have already played with each other
+            for neighbor in neighbors:
+                neighbor_agent: Agent = G.nodes[neighbor]['agent']
+
+                # todo: add a way to track previous choice between agents
+                x_choice = agent.play(neighbor_agent)
+                y_choice = neighbor_agent.play(agent)
+
+                agent.fitness, neighbor.fitness += distribute_payoff(x_choice, y_choice)
+
+
+
 
 
 simulate()

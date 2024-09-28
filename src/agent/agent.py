@@ -1,3 +1,4 @@
+from typing import Literal
 import math
 from common import RANDOM_SEEDED, SIMULATION_PARAMS
 
@@ -13,6 +14,12 @@ class Agent:
     #     2: [],
     #     5: [True, True],
     # }
+
+    def play(self, neighbor, is_first_step=False) -> Literal['C', 'D']:
+        if is_first_step:
+            return self.first_response()
+
+
 
     # todo: this is only used in the first round due to lack of information
     def first_response(self) -> float:

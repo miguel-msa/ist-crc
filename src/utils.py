@@ -34,6 +34,21 @@ def simulate_step():
     # todo: randomly pick 2 neighbors to, with a probability, adopt the strategy of the other
     pass
 
+# todo: review this payoff matrix and the way it is calculated!
+def distribute_payoff(x_choice, y_choice):
+    cost = SIMULATION_PARAMS['c']
+    payoff = SIMULATION_PARAMS['b']
+    reward = payoff - cost
+
+    if x_choice == 'C' and y_choice == 'C':
+        return reward, reward
+    elif x_choice == 'C' and y_choice == 'D':
+        return - cost, payoff
+    elif x_choice == 'D' and y_choice == 'C':
+        return payoff, cost
+    else:
+        return 0, 0 # ! check paper: 0 or punishment?
+
 def draw_graph(g: nx.Graph):
     pos = dict((n, n) for n in g.nodes())
 
