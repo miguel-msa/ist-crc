@@ -1,5 +1,5 @@
 import networkx as nx
-import matplotlib as plt
+import matplotlib.pyplot as plt
 from agent.agent import Agent
 from common import RANDOM_SEEDED, SIMULATION_PARAMS
 
@@ -34,6 +34,10 @@ def simulate_step():
     # todo: randomly pick 2 neighbors to, with a probability, adopt the strategy of the other
     pass
 
-def draw_graph(g: nx.Graph, node_size=100):
-    nx.draw(g, node_size)
+def draw_graph(g: nx.Graph):
+    pos = dict((n, n) for n in g.nodes())
+
+    nx.draw(g, pos, with_labels=False, node_size=300, node_color='lightblue',
+            font_size=8, font_color='black')
+
     plt.show()

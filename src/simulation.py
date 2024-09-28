@@ -18,3 +18,7 @@ def simulate():
     # for step in range(SIMULATION_PARAMS['generations']):
     #     # for each agent, play with all its neighbors
     #     graph.neighbors()
+
+
+simulate()
+
