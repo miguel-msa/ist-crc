@@ -1,25 +1,32 @@
-import math
-import random
-import numpy as np
+import networkx as nx
+import matplotlib as plt
 from agent.agent import Agent
+from common import RANDOM_SEEDED, SIMULATION_PARAMS
 
-#region simulation parameters
+def init_agents() -> list[Agent]:
+    agents = []
+    for i in range(SIMULATION_PARAMS['agents']):
+        i = RANDOM_SEEDED.integers(1, 101)
+        j = RANDOM_SEEDED.integers(1, 101)
 
-SEED = 21
-RANDOM_SEEDED = np.random.default_rng(SEED)
+        p = i * 0.01
+        q = j * 0.01
 
-SIMULATION_PARAMS = {
-    'lattice_size': 10,
-    'generations': 1000,
-    'transient_period': 500,
-    'agents': 100,
-    'K': 0.4,
-    'SIGMA': 0.005
-}
+        agent = Agent(i, p, q)
+        agents.append(agent)
+    return agents
 
-#todo: define the payoff matrix
+# init lattice with agents using networkx
+def init_lattice(agents: list[Agent]) -> nx.Graph:
+    # create a 2D grid graph
+    G = nx.grid_2d_graph(SIMULATION_PARAMS['lattice_size'], SIMULATION_PARAMS['lattice_size'])
 
-#endregion
+    # assign each node an Agent instance from the AGENTS list
+    for idx, node in enumerate(G.nodes):
+        G.nodes[node]['agent'] = agents[idx]
+
+    return G
+
 
 def simulate_step():
     # todo: each agent plays with all its neighbors
@@ -27,20 +34,6 @@ def simulate_step():
     # todo: randomly pick 2 neighbors to, with a probability, adopt the strategy of the other
     pass
 
-'''
-on each simulation time step, 2 neighbors are randomly picked (x and y) and calculate their individual payoff (fitness)
-player x adopts the strategy of player y with a probability given by the function adopt_strategy
-'''
-# todo: how to calculate the fitness of a player
-def should_adopt_strategy(fitness_x, fitness_y):
-    return random.random() < (1/(1 + math.exp(fitness_x - fitness_y)/K))
-
-def adopt_strategy(fitness_x, fitness_y, x: Agent, y):
-    adoption_probability = 1/(1 + math.exp(fitness_x - fitness_y)/K)
-
-    if random.random() < adoption_probability:
-        xi_1 = np.random.normal(0, SIGMA) # Mean 0, standard deviation sigma
-        xi_2 = np.random.normal(0, SIGMA)
-
-        x.p = y.p + xi_1
-        x.q = y.q + xi_2
+def draw_graph(g: nx.Graph, node_size=100):
+    nx.draw(g, node_size)
+    plt.show()

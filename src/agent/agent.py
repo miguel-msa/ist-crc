@@ -1,10 +1,9 @@
 import math
-from utils import RANDOM_SEEDED, SIMULATION_PARAMS
+from common import RANDOM_SEEDED, SIMULATION_PARAMS
 
 class Agent:
-    def __init__(self, id: int, b: int, p: int, q: int):
+    def __init__(self, id: int, p: int, q: int):
         self.id = id
-        self.b = b
         self.p = p
         self.q = q
         self.fitness = 0 # todo: increase on every game
@@ -21,6 +20,10 @@ class Agent:
         # defect -> [1 - (self.p + self.q)/2]
         return
 
+    '''
+    on each simulation time step, 2 neighbors are randomly picked (x and y) and calculate their individual payoff (fitness)
+    player x adopts the strategy of player y with a probability given by the function adopt_strategy
+    '''
     def adopt_strategy(self, fitness_y, p_y, q_y):
         adoption_probability = 1/(1 + math.exp(self.fitness - fitness_y)/SIMULATION_PARAMS['K'])
 
