@@ -38,6 +38,9 @@ cd venv
 pip intall -r ..\requirements.txt
 ```
 
+Networkx contains some dependencies, e.g., numpy, scipy that the requirements.txt version of networkx does not include, take that into account and install `networkx[default]` instead if you wish, or install dependencies manually ad hoc.
+For more details refer to [doc: networkx install](https://networkx.org/documentation/stable/install.html)
+
 ## License
 
 ### Code License
