@@ -35,12 +35,6 @@ def init_lattice(agents: list[Agent]) -> nx.Graph:
     return G
 
 
-def simulate_step():
-    # todo: each agent plays with all its neighbors
-    pass
-    # todo: randomly pick 2 neighbors to, with a probability, adopt the strategy of the other
-    pass
-
 # todo: review this payoff matrix and the way it is calculated!
 def distribute_payoff(x_choice, y_choice):
     cost = SIMULATION_PARAMS['c']
@@ -56,13 +50,6 @@ def distribute_payoff(x_choice, y_choice):
     else:
         return 0, 0 # ! check paper: 0 or punishment?
 
-def draw_graph(g: nx.Graph):
-    pos = dict((n, n) for n in g.nodes())
-
-    nx.draw(g, pos, with_labels=False, node_size=300, node_color='lightblue',
-            font_size=8, font_color='black')
-
-    plt.show()
 
 def pick_two_random_neighboring_nodes(G):
     random_node = RANDOM_SEEDED.choice(list(G.nodes))
@@ -73,3 +60,11 @@ def pick_two_random_neighboring_nodes(G):
     neighbor = neighbors[neighbor_index]
 
     return random_node, neighbor
+
+def draw_graph(g: nx.Graph):
+    pos = dict((n, n) for n in g.nodes())
+
+    nx.draw(g, pos, with_labels=False, node_size=300, node_color='lightblue',
+            font_size=8, font_color='black')
+
+    plt.show()
