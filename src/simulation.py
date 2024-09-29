@@ -1,4 +1,5 @@
-from utils import SIMULATION_PARAMS, init_agents, init_lattice, draw_graph, distribute_payoff
+from typing import List
+from utils import SIMULATION_PARAMS, init_agents, init_lattice, draw_graph, pick_two_random_neighboring_nodes
 from agent.agent import Agent
 
 
@@ -13,28 +14,26 @@ def simulate():
     # init lattice with agents
     G = init_lattice(agents)
 
-    # TEST: draw the graph
-    draw_graph(G)
+    # ! TEST: draw the graph
+    # draw_graph(G)
 
-    for step in range(SIMULATION_PARAMS['generations']):
+    for _ in range(SIMULATION_PARAMS['generations']):
         # for each agent, play with all its neighbors
         for node in G.nodes:
             agent: Agent = G.nodes[node]['agent']
             neighbors = G.neighbors(node)
 
-            # todo: track which agents have already played with each other
-            for neighbor in neighbors:
-                neighbor_agent: Agent = G.nodes[neighbor]['agent']
+            neighbor_agents: List[Agent] = list(G.nodes[n]['agent'] for n in neighbors)
 
-                # todo: add a way to track previous choice between agents
-                x_choice = agent.play(neighbor_agent)
-                y_choice = neighbor_agent.play(agent)
+            agent.play_with_neighbors(neighbor_agents)
 
-                agent.fitness, neighbor.fitness += distribute_payoff(x_choice, y_choice)
+        # randomly pick 2 neighbors to, with a probability, adopt the strategy of the other
+        node_x, node_y = pick_two_random_neighboring_nodes(G)
 
+        node_x_agent: Agent = G.nodes[node_x]['agent']
+        node_y_agent: Agent = G.nodes[node_y]['agent']
 
-
-
+        node_x_agent.adopt_strategy(node_y_agent.fitness, node_y_agent.p, node_y_agent.q)
 
 simulate()
 

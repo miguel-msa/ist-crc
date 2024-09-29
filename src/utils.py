@@ -1,3 +1,4 @@
+from typing import Dict, Literal
 import networkx as nx
 import matplotlib.pyplot as plt
 from agent.agent import Agent
@@ -25,6 +26,12 @@ def init_lattice(agents: list[Agent]) -> nx.Graph:
     for idx, node in enumerate(G.nodes):
         G.nodes[node]['agent'] = agents[idx]
 
+    # assign the agent's neighbors with a 'last play' placeholder value equal 'C'
+    for node in G.nodes:
+        neighbors = G.neighbors(node)
+        for n in neighbors:
+            neighbor_agent: Agent = G.nodes[n]['agent']
+            G.nodes[node]['agent'].last_play_by_neighbor[neighbor_agent.id] = 'C'
     return G
 
 
@@ -56,3 +63,13 @@ def draw_graph(g: nx.Graph):
             font_size=8, font_color='black')
 
     plt.show()
+
+def pick_two_random_neighboring_nodes(G):
+    random_node = RANDOM_SEEDED.choice(list(G.nodes))
+
+    neighbors = list(G.neighbors(random_node))
+
+    neighbor_index = RANDOM_SEEDED.choice(len(neighbors))
+    neighbor = neighbors[neighbor_index]
+
+    return random_node, neighbor
