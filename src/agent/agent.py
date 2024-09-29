@@ -41,9 +41,7 @@ class Agent:
 
     # todo: this is only used in the first round due to lack of information
     def first_response(self) -> Literal['C', 'D']:
-        # cooperate -> (self.p + self.q)/2
-        # defect -> [1 - (self.p + self.q)/2]
-        return
+        return 'C' if RANDOM_SEEDED.random() < (self.p + self.q)/2 else 'D'
 
     '''
     on each simulation time step, 2 neighbors are randomly picked (x and y) and calculate their individual payoff (fitness)
