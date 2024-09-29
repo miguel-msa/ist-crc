@@ -25,6 +25,10 @@ class Agent:
             neighbor_agent: Agent = neighbors_left_to_play[neighbor]
             x_choice = self.play(neighbor_agent)
             y_choice = neighbor_agent.play(self)
+
+            self.store_neighbor_choice(neighbor_agent.id, y_choice)
+            neighbor_agent.store_neighbor_choice(self.id, x_choice)
+
             # todo: check if this return is handling correctly assigning the payoff to the agents
             self.fitness, neighbor_agent.fitness += distribute_payoff(x_choice, y_choice)
 
@@ -35,6 +39,8 @@ class Agent:
             return self.first_response()
 
         #todo: play using q/p strategy
+        # - use q/p parameters
+        # - account for the last play of the neighbor (use: self.last_play_by_neighbor[neighbor.id])
 
 
 
@@ -42,6 +48,9 @@ class Agent:
     # todo: this is only used in the first round due to lack of information
     def first_response(self) -> Literal['C', 'D']:
         return 'C' if RANDOM_SEEDED.random() < (self.p + self.q)/2 else 'D'
+
+    def store_neighbor_choice(self, neighbor_id: int, choice: Literal['C', 'D']) -> None:
+        self.last_play_by_neighbor[neighbor_id] = choice
 
     '''
     on each simulation time step, 2 neighbors are randomly picked (x and y) and calculate their individual payoff (fitness)
