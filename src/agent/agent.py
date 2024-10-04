@@ -3,6 +3,7 @@ from dataclasses import dataclass
 import math
 from common import RANDOM_SEEDED, SIMULATION_PARAMS, distribute_payoff
 
+
 class Agent:
     def __init__(self, id: int, p: int, q: int):
         self.id = id
@@ -21,8 +22,10 @@ class Agent:
         self.playing_round += 1
         # filter out neighbors that have already played with this agent
         neighbors_left_to_play = list(filter(lambda n: self.playing_round > n.playing_round, neighbors_left_to_play))
-        for neighbor in neighbors_left_to_play:
+        for neighbor_agent in neighbors_left_to_play:
+            '''
             neighbor_agent: Agent = neighbors_left_to_play[neighbor]
+            '''
             x_choice = self.play(neighbor_agent)
             y_choice = neighbor_agent.play(self)
 
@@ -30,7 +33,9 @@ class Agent:
             neighbor_agent.store_neighbor_choice(self.id, x_choice)
 
             # todo: check if this return is handling correctly assigning the payoff to the agents
-            self.fitness, neighbor_agent.fitness += distribute_payoff(x_choice, y_choice)
+            #self.fitness, neighbor_agent.fitness += distribute_payoff(x_choice, y_choice)
+            self.fitness += distribute_payoff(x_choice, y_choice)[0]
+            neighbor_agent.fitness += distribute_payoff(x_choice, y_choice)[1]
 
 
 

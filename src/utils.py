@@ -36,7 +36,7 @@ def init_lattice(agents: list[Agent]) -> nx.Graph:
 
 
 # todo: review this payoff matrix and the way it is calculated!
-def distribute_payoff(x_choice, y_choice):
+'''def distribute_payoff(x_choice, y_choice):
     cost = SIMULATION_PARAMS['c']
     payoff = SIMULATION_PARAMS['b']
     reward = payoff - cost
@@ -49,10 +49,11 @@ def distribute_payoff(x_choice, y_choice):
         return payoff, cost
     else:
         return 0, 0 # ! check paper: 0 or punishment?
-
+'''
 
 def pick_two_random_neighboring_nodes(G):
     random_node = RANDOM_SEEDED.choice(list(G.nodes))
+    print(random_node)
 
     neighbors = list(G.neighbors(random_node))
 
