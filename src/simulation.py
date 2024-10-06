@@ -35,5 +35,6 @@ def simulate():
 
         node_x_agent.adopt_strategy(node_y_agent.fitness, node_y_agent.p, node_y_agent.q)
 
-simulate()
+if __name__ == '__main__':
+    simulate()
 

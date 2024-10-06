@@ -52,9 +52,11 @@ def distribute_payoff(x_choice, y_choice):
 
 
 def pick_two_random_neighboring_nodes(G):
-    random_node = RANDOM_SEEDED.choice(list(G.nodes))
+    # random_node = RANDOM_SEEDED.choice(list(G.nodes))
+    random_node_idx = RANDOM_SEEDED.integers(0, len(G.nodes))
 
-    neighbors = list(G.neighbors(random_node))
+    # 🐛 : understand bug here
+    neighbors = list(G.neighbors(random_node_idx))
 
     neighbor_index = RANDOM_SEEDED.choice(len(neighbors))
     neighbor = neighbors[neighbor_index]
