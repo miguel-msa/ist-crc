@@ -37,10 +37,16 @@ class Agent:
     def play(self, neighbor: 'Agent') -> Literal['C', 'D']:
         if self.playing_round == 1:
             return self.first_response()
+            # get the last choice the neighbord made when playing with this agent
+        last_neighbor_choice = self.last_play_by_neighbor[neighbor.id]
 
-        #todo: play using q/p strategy
-        # - use q/p parameters
-        # - account for the last play of the neighbor (use: self.last_play_by_neighbor[neighbor.id])
+        if last_neighbor_choice is None:
+            return self.first_response()
+
+        if last_neighbor_choice == 'C':
+            return 'C' if RANDOM_SEEDED.random() < self.p else 'D'
+        elif last_neighbor_choice == 'D':
+            return 'C' if RANDOM_SEEDED.random() < self.q else 'D'
 
 
 
