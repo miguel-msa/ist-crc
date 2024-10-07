@@ -12,11 +12,21 @@ class Agent:
         self.last_play_by_neighbor: Dict[int, NeighborPlay] = {}
         self.playing_round = 0
 
-    def play_with_neighbors(self, neighbors_left_to_play: List['Agent']):
+    def play_with_neighbors(self, neighbors_to_play: List['Agent']):
         self.playing_round += 1
+
+        # print(f'Agent {self.id} on round {self.playing_round} with {len(neighbors_to_play)} neighbors')
+        # for neighbor in neighbors_to_play:
+        #     print(f'{neighbor.id} | {neighbor.playing_round}')
+
         # filter out neighbors that have already played with this agent
-        neighbors_left_to_play = list(filter(lambda n: self.playing_round > n.playing_round, neighbors_left_to_play))
-        print(neighbors_left_to_play)
+        neighbors_left_to_play = list(filter(lambda n: self.playing_round > n.playing_round, neighbors_to_play))
+
+        if len(neighbors_left_to_play) > 0:
+            print(f'Agent {self.id} on round {self.playing_round} will play with {len(neighbors_left_to_play)} neighbors')
+            for neighbor in neighbors_left_to_play:
+                print(f'{neighbor.id} | {neighbor.playing_round}')
+
         for idx, _ in enumerate(neighbors_left_to_play):
             neighbor_agent: Agent = neighbors_left_to_play[idx]
             x_choice = self.play(neighbor_agent)
@@ -28,6 +38,7 @@ class Agent:
             # todo: check if this return is handling correctly assigning the payoff to the agents
             from utils import distribute_payoff
             self_payoff, neighbor_payoff = distribute_payoff(x_choice, y_choice)
+            print(f'{self_payoff} | {neighbor_payoff}')
             self.fitness += self_payoff
             neighbor_agent.fitness += neighbor_payoff
 

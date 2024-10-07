@@ -6,12 +6,13 @@ from common import RANDOM_SEEDED, SIMULATION_PARAMS
 
 def init_agents() -> list[Agent]:
     agents = []
+    print(f'Creating {SIMULATION_PARAMS["agents"]} agents')
     for i in range(SIMULATION_PARAMS['agents']):
-        i = RANDOM_SEEDED.integers(1, 101)
-        j = RANDOM_SEEDED.integers(1, 101)
+        i_seed = RANDOM_SEEDED.integers(1, 101)
+        j_seed = RANDOM_SEEDED.integers(1, 101)
 
-        p = i * 0.01
-        q = j * 0.01
+        p = i_seed * 0.01
+        q = j_seed * 0.01
 
         agent = Agent(i, p, q)
         agents.append(agent)
@@ -21,6 +22,10 @@ def init_agents() -> list[Agent]:
 def init_lattice(agents: list[Agent]) -> nx.Graph:
     # create a 2D grid graph
     G = nx.grid_2d_graph(SIMULATION_PARAMS['lattice_size'], SIMULATION_PARAMS['lattice_size'])
+
+    # check if the number of agents matches the number of nodes
+    if len(agents) < len(G.nodes):
+        raise ValueError("Not enough agents to assign to all nodes.")
 
     # assign each node an Agent instance from the AGENTS list
     for idx, node in enumerate(G.nodes):
@@ -52,15 +57,24 @@ def distribute_payoff(x_choice, y_choice):
 
 
 def pick_two_random_neighboring_nodes(G):
-    # random_node = RANDOM_SEEDED.choice(list(G.nodes))
-    random_node_idx = RANDOM_SEEDED.integers(0, len(G.nodes))
+    random_node = tuple(int(x) for x in RANDOM_SEEDED.choice(list(G.nodes)))
+    print(f'Selected random node: {random_node}')
+    # random_node_idx = RANDOM_SEEDED.integers(0, len(G.nodes))
 
     # 🐛 : understand bug here
-    neighbors = list(G.neighbors(random_node_idx))
+    # print(G.nodes)
+    # print('neighbors...')
+    # print(list(nx.all_neighbors(G, (0,0))))
+    # print('----')
+    neighbors = list(G.neighbors(random_node))
+
+    print('NEIGHBORS')
+    print(neighbors)
 
     neighbor_index = RANDOM_SEEDED.choice(len(neighbors))
     neighbor = neighbors[neighbor_index]
 
+    print(f'will return {random_node} and {neighbor}')
     return random_node, neighbor
 
 def draw_graph(g: nx.Graph):

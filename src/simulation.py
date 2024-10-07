@@ -35,6 +35,9 @@ def simulate():
 
         node_x_agent.adopt_strategy(node_y_agent.fitness, node_y_agent.p, node_y_agent.q)
 
+    for agent in agents:
+        print(f'Agent {agent.id} with fitness {agent.fitness}, p: {agent.p}, q: {agent.q}')
+
 if __name__ == '__main__':
     simulate()
 
