@@ -1,3 +1,4 @@
+import numpy as np
 from typing import Literal, Dict, List
 from dataclasses import dataclass
 import math
@@ -73,7 +74,7 @@ class Agent:
     player x adopts the strategy of player y with a probability given by the function adopt_strategy
     '''
     def adopt_strategy(self, fitness_y, p_y, q_y):
-        adoption_probability = 1/(1 + math.exp(self.fitness - fitness_y)/SIMULATION_PARAMS['K'])
+        adoption_probability = 1/(1 + np.exp((self.fitness - fitness_y)/SIMULATION_PARAMS['K']))
 
         if RANDOM_SEEDED.random() < adoption_probability:
             xi_1 = RANDOM_SEEDED.normal(0, SIMULATION_PARAMS['SIGMA']) # Mean 0, standard deviation sigma

@@ -15,7 +15,7 @@ def simulate():
     G = init_lattice(agents)
 
     # ! TEST: draw the graph
-    # draw_graph(G)
+    #draw_graph(G)
 
     for _ in range(SIMULATION_PARAMS['generations']):
         # for each agent, play with all its neighbors
