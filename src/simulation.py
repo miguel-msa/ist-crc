@@ -11,6 +11,10 @@ def simulate():
     # init agent with random values of p and q where p = i*0.01 and q = i*0.01 for i,j  in range(1, 101) random for each agent
     agents = init_agents()
 
+    total_plays = 0
+    total_cooperates = 0
+    total_defects = 0
+
     # init lattice with agents
     G = init_lattice(agents)
 
@@ -26,6 +30,9 @@ def simulate():
             neighbor_agents: List[Agent] = list(G.nodes[n]['agent'] for n in neighbors)
 
             agent.play_with_neighbors(neighbor_agents)
+            total_plays += agent.play_flag
+            total_cooperates += agent.cooperate_flag
+            total_defects += agent.defect_flag
 
         # randomly pick 2 neighbors to, with a probability, adopt the strategy of the other
         node_x, node_y = pick_two_random_neighboring_nodes(G)
@@ -35,6 +42,12 @@ def simulate():
 
         node_x_agent.adopt_strategy(node_y_agent.fitness, node_y_agent.p, node_y_agent.q)
 
+    print(total_plays)
+    print(total_cooperates)
+    cooperation_ratio = total_cooperates/total_plays
+    CD_check = total_cooperates + total_defects
+    print(cooperation_ratio)
+    print(CD_check)
     for agent in agents:
         print(f'Agent {agent.id} with fitness {agent.fitness}, p: {agent.p}, q: {agent.q}')
 

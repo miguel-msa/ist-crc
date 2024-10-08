@@ -12,6 +12,9 @@ class Agent:
         self.fitness = 0 # todo: increase on every game
         self.last_play_by_neighbor: Dict[int, NeighborPlay] = {}
         self.playing_round = 0
+        self.play_flag = 0
+        self.cooperate_flag = 0
+        self.defect_flag = 0
 
     def play_with_neighbors(self, neighbors_to_play: List['Agent']):
         self.playing_round += 1
@@ -33,6 +36,7 @@ class Agent:
             x_choice = self.play(neighbor_agent)
             y_choice = neighbor_agent.play(self)
 
+
             self.store_neighbor_choice(neighbor_agent.id, y_choice)
             neighbor_agent.store_neighbor_choice(self.id, x_choice)
 
@@ -46,18 +50,45 @@ class Agent:
 
 
     def play(self, neighbor: 'Agent') -> Literal['C', 'D']:
+
         if self.playing_round == 1:
-            return self.first_response()
+            self.play_flag += 1
+            first_response = self.first_response()
+            if(first_response == 'C'):
+                self.cooperate_flag += 1
+            elif(first_response == 'D'):
+                self.defect_flag += 1
+
+            return first_response
             # get the last choice the neighbord made when playing with this agent
         last_neighbor_choice = self.last_play_by_neighbor[neighbor.id]
 
         if last_neighbor_choice is None:
-            return self.first_response()
+            self.play_flag += 1
+            first_response = self.first_response()
+            if(first_response == 'C'):
+                self.cooperate_flag += 1
+            elif(first_response == 'D'):
+                self.defect_flag += 1
+
+            return first_response
 
         if last_neighbor_choice == 'C':
-            return 'C' if RANDOM_SEEDED.random() < self.p else 'D'
+            self.play_flag += 1
+            if(RANDOM_SEEDED.random() < self.p):
+                self.cooperate_flag += 1
+                return 'C'
+            else:
+                self.defect_flag += 1
+                return 'D'
         elif last_neighbor_choice == 'D':
-            return 'C' if RANDOM_SEEDED.random() < self.q else 'D'
+            self.play_flag += 1
+            if (RANDOM_SEEDED.random() < self.q):
+                self.cooperate_flag += 1
+                return 'C'  
+            else:
+                self.defect_flag += 1
+                return 'D'
 
 
 
