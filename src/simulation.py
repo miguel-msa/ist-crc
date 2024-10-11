@@ -1,6 +1,7 @@
 from typing import List
 from utils import SIMULATION_PARAMS, init_agents, init_lattice, draw_graph, pick_two_random_neighboring_nodes
 from agent.agent import Agent
+from common import SEED
 
 
 '''
@@ -10,6 +11,7 @@ simulation configuration are @ common.py
 def simulate():
     # init agent with random values of p and q where p = i*0.01 and q = i*0.01 for i,j  in range(1, 101) random for each agent
     agents = init_agents()
+
 
     total_plays = 0
     total_cooperates = 0
@@ -21,7 +23,9 @@ def simulate():
     # ! TEST: draw the graph
     #draw_graph(G)
 
-    for _ in range(SIMULATION_PARAMS['generations']):
+    for generation in range(SIMULATION_PARAMS['generations']):
+        if(generation % 100 == 0):
+            print(generation)
         # for each agent, play with all its neighbors
         for node in G.nodes:
             agent: Agent = G.nodes[node]['agent']
@@ -53,4 +57,5 @@ def simulate():
 
 if __name__ == '__main__':
     simulate()
+    print(SEED)
 

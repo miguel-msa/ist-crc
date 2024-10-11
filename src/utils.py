@@ -3,6 +3,8 @@ import networkx as nx
 import matplotlib.pyplot as plt
 from agent.agent import Agent
 from common import RANDOM_SEEDED, SIMULATION_PARAMS
+import math
+import numpy as np
 
 def init_agents() -> list[Agent]:
     agents = []
@@ -16,6 +18,8 @@ def init_agents() -> list[Agent]:
 
         agent = Agent(i, p, q)
         agents.append(agent)
+        print(f'{agent.id} - q:{round(agent.q, 3)} - p:{round(agent.p, 3)}')
+
     return agents
 
 # init lattice with agents using networkx
@@ -51,14 +55,14 @@ def distribute_payoff(x_choice, y_choice):
     elif x_choice == 'C' and y_choice == 'D':
         return - cost, payoff
     elif x_choice == 'D' and y_choice == 'C':
-        return payoff, cost
+        return payoff, - cost
     else:
         return 0, 0 # ! check paper: 0 or punishment?
 
 
 def pick_two_random_neighboring_nodes(G):
     random_node = tuple(int(x) for x in RANDOM_SEEDED.choice(list(G.nodes)))
-    print(f'Selected random node: {random_node}')
+    #print(f'Selected random node: {random_node}')
     # random_node_idx = RANDOM_SEEDED.integers(0, len(G.nodes))
 
     # 🐛 : understand bug here
@@ -68,13 +72,13 @@ def pick_two_random_neighboring_nodes(G):
     # print('----')
     neighbors = list(G.neighbors(random_node))
 
-    print('NEIGHBORS')
-    print(neighbors)
+    #print('NEIGHBORS')
+    #print(neighbors)
 
     neighbor_index = RANDOM_SEEDED.choice(len(neighbors))
     neighbor = neighbors[neighbor_index]
 
-    print(f'will return {random_node} and {neighbor}')
+    #print(f'will return {random_node} and {neighbor}')
     return random_node, neighbor
 
 def draw_graph(g: nx.Graph):
