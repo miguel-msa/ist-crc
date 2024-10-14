@@ -1,2 +1,10 @@
 .venv
 __pycache__
+
+report.aux
+report.fdb_latexmk
+report.fls
+report.log
+report.out
+report.pdf
+report.synctex.gz
