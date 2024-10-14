@@ -1,0 +1,129 @@
+% https://www.springer.com/gp/computer-science/lncs/conference-proceedings-guidelines
+\documentclass[runningheads]{llncs}
+%
+\usepackage[T1]{fontenc}
+% T1 fonts will be used to generate the final print and online PDFs,
+% so please use T1 fonts in your manuscript whenever possible.
+% Other font encondings may result in incorrect characters.
+%
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{parselines}
+\usepackage{listings}
+% Used for displaying a sample figure. If possible, figure files should
+% be included in EPS format.
+%
+% If you use the hyperref package, please uncomment the following two lines
+% to display URLs in blue roman font according to Springer's eBook style:
+%\usepackage{color}
+%\renewcommand\UrlFont{\color{blue}\rmfamily}
+%\urlstyle{rm}
+%
+\begin{document}
+%
+% todo: set this
+\title{CRC - Incipient Cognition}
+
+
+%
+%\titlerunning{Abbreviated paper title}
+% If the paper title is too long for the running head, you can set
+% an abbreviated paper title here
+%
+\author{Miguel Albuquerque\inst{1}\orcidID{1105828} \and
+colega2\inst{1}\orcidID{n2} \and colega3\inst{1}\orcidID{n3}}
+
+\authorrunning{Group 28?}
+\institute{Instituto Superior Técnico, Av. Rovisco Pais 1, 1049-001 Lisboa, Portugal \and
+\email{\{miguel.albuquerque,colega2, colega3}@tecnico.ulisboa.pt}
+
+%
+\maketitle              % typeset the header of the contribution
+%
+\begin{abstract}
+OUR ABSTRACT HERE
+\end{abstract}
+
+
+\keywords{Dkron \and Distributed \and Benchmark \and Scalability \and Consensus \and Dkron Server \ and Dkron Agent \and Raft.}
+%
+%
+%
+% %%%
+% %%%
+
+
+\section{Introduction}
+
+Relation to chosen paper
+\begin{enumerate}
+    \item Background
+    \item Motivation
+    \item Rel. Work
+    \item Easy to deploy with built-in replicated storage (BuntDB) relying on the Raft protocol.
+    \item Provides a Web-GUI for administration.
+\end{enumerate}
+
+% FIGURE EXAMPLE
+%\begin{figure}[h]
+%\centering
+%%\caption{dkron Logo .} \label{fig1}
+%\end{figure}
+
+\section{Method/Model}
+What did they do -> baseline
+What we did; what we added/changed
+
+
+\section{Results + Discussion}
+
+Dis we get the same insights? Assert (our results, baseline)
+What else did we find?
+
+\section{Conclusion}
+
+\subsection{Limitations}
+
+\subsection{Future Work}
+
+\section{Annexes}
+
+
+
+\subsection{Metrics Visualisation}
+
+% more figure examples
+%\begin{figure}[H]
+%    \centering
+%    \includegraphics[width=1\textwidth]{media/FailureRate_trend.png} \caption{Failure Rate Trend Across Benchmarks}
+%    \label{fig:aaa}
+%\end{figure}
+
+
+
+% ---- Bibliography ----
+%
+% BibTeX users should specify bibliography style 'splncs04'.
+% References will then be sorted and formatted in the correct style.
+%
+% \bibliographystyle{splncs04}
+% \bibliography{mybibliography}
+%
+\begin{thebibliography}{8}
+
+\bibitem{mm2024}
+Matos, M.: IST - <Course name here> - Class slides
+Lisbon (2024)
+
+\bibitem{dkron}
+https://dkron.io/docs/intro
+\bibitem{dkron2}
+https://k6.io/docs/
+\bibitem{dkron3}
+https://helm.sh/docs/
+\bibitem{dkron4}
+https://kubernetes.io/docs/home/
+\end{thebibliography}
+\end{document}
