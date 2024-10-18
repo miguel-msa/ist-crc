@@ -59,7 +59,6 @@ def distribute_payoff(x_choice, y_choice):
     else:
         return 0, 0 # ! check paper: 0 or punishment?
 
-
 def pick_two_random_neighboring_nodes(G):
     random_node = tuple(int(x) for x in RANDOM_SEEDED.choice(list(G.nodes)))
     #print(f'Selected random node: {random_node}')

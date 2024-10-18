@@ -19,18 +19,8 @@ class Agent:
     def play_with_neighbors(self, neighbors_to_play: List['Agent']):
         self.playing_round += 1
 
-        # print(f'Agent {self.id} on round {self.playing_round} with {len(neighbors_to_play)} neighbors')
-        # for neighbor in neighbors_to_play:
-        #     print(f'{neighbor.id} | {neighbor.playing_round}')
-
         # filter out neighbors that have already played with this agent
         neighbors_left_to_play = list(filter(lambda n: self.playing_round > n.playing_round, neighbors_to_play))
-        '''
-        if len(neighbors_left_to_play) > 0:
-            print(f'Agent {self.id} on round {self.playing_round} will play with {len(neighbors_left_to_play)} neighbors')
-            for neighbor in neighbors_left_to_play:
-                print(f'{neighbor.id} | {neighbor.playing_round}')
-        '''
 
         for idx, _ in enumerate(neighbors_left_to_play):
             neighbor_agent: Agent = neighbors_left_to_play[idx]
@@ -44,38 +34,22 @@ class Agent:
             # todo: check if this return is handling correctly assigning the payoff to the agents
             from utils import distribute_payoff
             self_payoff, neighbor_payoff = distribute_payoff(x_choice, y_choice)
-            #print(f'{self_payoff} | {neighbor_payoff}')
             self.fitness += self_payoff
-            #if(self.fitness < 0):
-                #self.fitness = 0
             neighbor_agent.fitness += neighbor_payoff
-            #if(neighbor_agent.fitness < 0):
-                #neighbor_agent.fitness = 0
 
 
 
     def play(self, neighbor: 'Agent') -> Literal['C', 'D']:
 
         if self.playing_round == 1:
-            #self.play_flag += 1
             first_response = self.first_response()
-            '''
-            if(first_response == 'C'):
-                self.play_flag += 1
-                self.cooperate_flag += 1
-            elif(first_response == 'D'):
-                self.play_flag += 1
-                self.defect_flag += 1
-            '''
 
             return first_response
             # get the last choice the neighbord made when playing with this agent
         last_neighbor_choice = self.last_play_by_neighbor[neighbor.id]
 
         if last_neighbor_choice is None:
-            #self.play_flag += 1
             first_response = self.first_response()
-            #if(self.playing_round >= SIMULATION_PARAMS['transient_period']):
             if(first_response == 'C'):
                 self.play_flag += 1
                 self.cooperate_flag += 1
@@ -84,28 +58,22 @@ class Agent:
                 self.defect_flag += 1
 
             return first_response
-        
+
         if last_neighbor_choice == 'C':
-            #self.play_flag += 1
             if(RANDOM_SEEDED.random() < self.p):
-                #if(self.playing_round >= SIMULATION_PARAMS['transient_period']):
                 self.play_flag += 1
                 self.cooperate_flag += 1
                 return 'C'
             else:
-                #if(self.playing_round >= SIMULATION_PARAMS['transient_period']):
                 self.play_flag += 1
                 self.defect_flag += 1
                 return 'D'
         elif last_neighbor_choice == 'D':
-            #self.play_flag += 1
             if (RANDOM_SEEDED.random() < self.q):
-                #if(self.playing_round >= SIMULATION_PARAMS['transient_period']):
                 self.play_flag += 1
                 self.cooperate_flag += 1
-                return 'C'  
+                return 'C'
             else:
-                #if(self.playing_round >= SIMULATION_PARAMS['transient_period']):
                 self.play_flag += 1
                 self.defect_flag += 1
                 return 'D'
@@ -130,6 +98,11 @@ class Agent:
         if RANDOM_SEEDED.random() < adoption_probability:
             xi_1 = RANDOM_SEEDED.normal(0, SIMULATION_PARAMS['SIGMA']) # Mean 0, standard deviation sigma
             xi_2 = RANDOM_SEEDED.normal(0, SIMULATION_PARAMS['SIGMA'])
+
+            # if (p_y < 0 or xi_1 < 0):
+            #     print(f'p_y: {p_y} | xi_1: {xi_1}')
+            # if (q_y < 0 or xi_2 < 0):
+            #     print(f'q_y: {q_y} | xi_2: {xi_2}')
 
             self.p = p_y + xi_1
             if(self.p > 1):
