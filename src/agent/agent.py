@@ -46,54 +46,68 @@ class Agent:
             self_payoff, neighbor_payoff = distribute_payoff(x_choice, y_choice)
             #print(f'{self_payoff} | {neighbor_payoff}')
             self.fitness += self_payoff
+            #if(self.fitness < 0):
+                #self.fitness = 0
             neighbor_agent.fitness += neighbor_payoff
+            #if(neighbor_agent.fitness < 0):
+                #neighbor_agent.fitness = 0
 
 
 
     def play(self, neighbor: 'Agent') -> Literal['C', 'D']:
 
         if self.playing_round == 1:
-            self.play_flag += 1
+            #self.play_flag += 1
             first_response = self.first_response()
+            '''
             if(first_response == 'C'):
+                self.play_flag += 1
                 self.cooperate_flag += 1
             elif(first_response == 'D'):
+                self.play_flag += 1
                 self.defect_flag += 1
+            '''
 
             return first_response
             # get the last choice the neighbord made when playing with this agent
         last_neighbor_choice = self.last_play_by_neighbor[neighbor.id]
 
         if last_neighbor_choice is None:
-            self.play_flag += 1
+            #self.play_flag += 1
             first_response = self.first_response()
-            if(self.playing_round >= SIMULATION_PARAMS['transient_period']):
-                if(first_response == 'C'):
-                    self.cooperate_flag += 1
-                elif(first_response == 'D'):
-                    self.defect_flag += 1
+            #if(self.playing_round >= SIMULATION_PARAMS['transient_period']):
+            if(first_response == 'C'):
+                self.play_flag += 1
+                self.cooperate_flag += 1
+            elif(first_response == 'D'):
+                self.play_flag += 1
+                self.defect_flag += 1
 
             return first_response
         
         if last_neighbor_choice == 'C':
-            self.play_flag += 1
+            #self.play_flag += 1
             if(RANDOM_SEEDED.random() < self.p):
-                if(self.playing_round >= SIMULATION_PARAMS['transient_period']):
-                    self.cooperate_flag += 1
+                #if(self.playing_round >= SIMULATION_PARAMS['transient_period']):
+                self.play_flag += 1
+                self.cooperate_flag += 1
                 return 'C'
             else:
-                if(self.playing_round >= SIMULATION_PARAMS['transient_period']):
-                    self.defect_flag += 1
+                #if(self.playing_round >= SIMULATION_PARAMS['transient_period']):
+                self.play_flag += 1
+                self.defect_flag += 1
                 return 'D'
         elif last_neighbor_choice == 'D':
-            self.play_flag += 1
+            #self.play_flag += 1
             if (RANDOM_SEEDED.random() < self.q):
-                if(self.playing_round >= SIMULATION_PARAMS['transient_period']):
-                    self.cooperate_flag += 1
+                #if(self.playing_round >= SIMULATION_PARAMS['transient_period']):
+                self.play_flag += 1
+                self.cooperate_flag += 1
                 return 'C'  
             else:
-                if(self.playing_round >= SIMULATION_PARAMS['transient_period']):
-                    self.defect_flag += 1
+                #if(self.playing_round >= SIMULATION_PARAMS['transient_period']):
+                self.play_flag += 1
+                self.defect_flag += 1
                 return 'D'
 
 
@@ -118,7 +132,16 @@ class Agent:
             xi_2 = RANDOM_SEEDED.normal(0, SIMULATION_PARAMS['SIGMA'])
 
             self.p = p_y + xi_1
+            if(self.p > 1):
+                self.p = 1
+            elif(self.p < 0):
+                self.p = 0
+
             self.q = q_y + xi_2
+            if(self.q > 1):
+                self.q = 1
+            elif(self.q < 0):
+                self.q = 0
 
     def __str__(self):
         return f"Agent({self})"

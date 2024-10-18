@@ -10,8 +10,8 @@ def init_agents() -> list[Agent]:
     agents = []
     print(f'Creating {SIMULATION_PARAMS["agents"]} agents')
     for i in range(SIMULATION_PARAMS['agents']):
-        i_seed = RANDOM_SEEDED.integers(1, 101)
-        j_seed = RANDOM_SEEDED.integers(1, 101)
+        i_seed = RANDOM_SEEDED.integers(0, 101)
+        j_seed = RANDOM_SEEDED.integers(0, 101)
 
         p = i_seed * 0.01
         q = j_seed * 0.01
