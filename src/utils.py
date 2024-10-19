@@ -87,3 +87,21 @@ def draw_graph(g: nx.Graph):
             font_size=8, font_color='black')
 
     plt.show()
+
+
+class SimulationResult():
+    def __init__(self, total_sims: int, total_play: int, coop_ratio_sum: float, p: float, q: float):
+        self.total_sims = total_sims
+        self.total_play = total_play
+        self.coop_ratio_sum = coop_ratio_sum
+        self.p = p
+        self.q = q
+
+    def getAvgCoop(self):
+        return self.coop_ratio_sum/self.total_sims
+
+    def getAvgP(self):
+        return self.p/self.total_sims
+
+    def getAvgQ(self):
+        return self.q/self.total_sims
