@@ -69,11 +69,42 @@ TODO:
 
 \section{Introduction}
 
-The evolution of cooperation in dynamic systems is a central question in evolutionary game theory, with implications for fields ranging from biology to social networks and distributed control systems. Cooperation, though beneficial for the collective, is often undermined by defection, where individual agents seek short-term gains at the expense of collective well-being. The Prisoner’s Dilemma (PD) offers a fundamental framework for examining such interactions, presenting agents with a choice between cooperation and defection, and its dynamics have been widely studied to understand the conditions under which cooperation can emerge and persist.
+\subsection{Background}
 
-Spatial structure has long been recognized as a crucial factor in promoting cooperation. When agents are embedded in spatially structured networks, such as grids or lattices, cooperative clusters can form and resist invasion by defectors. However, spatial reciprocity alone is often insufficient to ensure long-term cooperation, especially under high temptation to defect.
+\begin{itemize}
+    \item Prisioner's Dilemma
+    \item Direct Reciprocity
+    \item Cooperation in homogeneous worls + Spatial Reciprocity
+    \item Different Tensions, different dilemmas
+    \item Homogeneous VS heterogeneous networks (+ role of heterogeneity)
+\end{itemize}
 
-Recent studies, including the seminal work by Vukov et al., introduced the concept of incipient cognition to address this limitation. Incipient cognition allows agents to adapt their strategies based on previous interactions, providing a more dynamic and flexible approach to decision-making. By allowing agents to remember and react to past experiences, cognitive abilities can significantly enhance cooperation, even in environments where defection might otherwise dominate. Vukov et al. demonstrated that incorporating these cognitive abilities into agents' decision-making processes led to robust cooperation, even under conditions of high temptation to defect.
+\subsection{Motivation and Related Work}
+The evolution of cooperation in dynamic systems is a central question in evolutionary
+game theory, with implications for fields ranging from biology to social networks
+and distributed control systems \cite{nowak2006}. Cooperation, though beneficial for the collective,
+is often undermined by defection, where individual agents seek short-term gains at
+the expense of collective well-being \cite{axelrod1981}. The Prisoner’s Dilemma (PD) offers a
+fundamental framework for examining such interactions, presenting agents with a
+choice between cooperation and defection, and its dynamics have been widely studied
+to understand the conditions under which cooperation can emerge and persist \cite{nowak1992}.
+
+Spatial structure has long been recognized as a crucial factor in promoting cooperation.
+When agents are embedded in spatially structured networks, such as grids or lattices,
+cooperative clusters can form and resist invasion by defectors. However, spatial
+reciprocity alone is often insufficient to ensure long-term cooperation, especially
+under high temptation to defect \cite{nowak1992,szabo2007}.
+
+
+Recent studies, including the work by Vukov et al. \cite{vukov}, introduced the concept of incipient
+cognition to address this limitation.
+Incipient cognition allows agents to adapt their strategies based on previous
+interactions, providing a more dynamic and flexible approach to decision-making.
+By allowing agents to remember and react to past experiences, cognitive abilities
+can significantly enhance cooperation, even in environments where defection might
+otherwise dominate. Vukov et al. demonstrated that incorporating these cognitive
+abilities into agents' decision-making processes led to robust cooperation,
+even under conditions of high temptation to defect.
 
 In this study, we replicate and extend the findings of Vukov et al., confirming the impact of incipient cognition on the evolution of cooperation in spatial networks. \textbf{By introducing slight refinements in the cognitive decision-making processes and incorporating stochastic variations in strategy adoption} , we aimed to explore the robustness of cooperation in dynamic systems further. Our results align with the theoretical predictions, demonstrating that agents employing incipient cognition maintain high levels of cooperation, even under significant temptation to defect.
 
@@ -87,9 +118,22 @@ TODO:
 
 \subsection{Baseline: Previous Work}
 
-The foundational work by Vukov et al. explored how incipient cognition, coupled with spatial structure, promotes cooperation in a Prisoner’s Dilemma setting. In their model, agents occupied nodes on a network and interacted only with their immediate neighbors. Each agent's decision to cooperate or defect was influenced by prior interactions, allowing for adaptive strategies based on past behavior. Fitness, calculated as the accumulated payoff from repeated interactions, determined strategy evolution. \textbf{Agents adopted the strategies of more successful neighbors probabilistically, with occasional mutations introducing stochasticity into the process.}
+The foundational work by Vukov et al. \cite{vukov} explored how incipient cognition, coupled with
+spatial structure, promotes cooperation in a Prisoner’s Dilemma setting.
+In this paper's model, agents occupied nodes on a network and interacted only with their
+immediate neighbors. Each agent's decision to cooperate or defect was influenced
+by prior interactions, allowing for adaptive strategies based on the last behavior.
+Fitness, calculated as the accumulated payoff from repeated interactions,
+determined strategy evolution. \textbf{Agents adopted the strategies of more successful neighbors probabilistically, with occasional mutations introducing stochasticity into the process.}
 
-Their results highlighted the crucial role of spatial structure in facilitating cooperation. Cooperative agents tended to cluster, protecting themselves from defection and sustaining cooperation over time. Vukov et al. also found that the temptation to defect, represented by the parameter \( b \), played a pivotal role in determining the sustainability of cooperation. Notably, their model already incorporated cognition-based strategy adaptation, where agents adjust their behaviors based on previous interactions, leading to the formation of robust cooperative clusters even under conditions of temptation.
+Their results highlighted the crucial role of spatial structure in facilitating cooperation.
+Cooperative agents tended to cluster, protecting themselves from defection and
+sustaining cooperation over time. Vukov et al. also found that the temptation to
+defect, represented by the parameter \( b \), played a pivotal role in determining
+the sustainability of cooperation. Notably, their model already incorporated
+cognition-based strategy adaptation, where agents adjust their behaviors based on
+previous interactions, leading to the formation of robust cooperative clusters even
+under conditions of temptation.
 
 
 TODO
@@ -199,7 +243,7 @@ Finally, practical applications of this model could extend to distributed system
 %
 \begin{thebibliography}{8}
 \bibitem{mm2024}
-Matos, M.: IST - Ciência de Redes Complexas - Class slides
+Francisco, A, et al.: IST - Ciência de Redes Complexas - Class slides
 Lisbon (2024)
 
 
