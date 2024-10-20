@@ -1,5 +1,9 @@
 # IST - Network Science
 
+# TODO
+
+-   "Given the multitude of third-party libraries you may use, it would be very helpful if you add a readme file with an overview of the code, dependencies, configuration/installatio"
+
 ## Requirements
 
 If you do not want to use a virtual environment, you are free to manage the project package requirements as you wish.
