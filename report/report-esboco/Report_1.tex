@@ -122,7 +122,7 @@ from defectors.
 \subsection{Motivation and Related Work}
 The evolution of cooperation in dynamic systems is a central question in evolutionary
 game theory, with implications for fields ranging from biology to social networks
-and distributed control systems \cite{nowak2006}. Cooperation, though beneficial for the collective,
+and distributed control systems \cite{nowak2006}. Cooperation, although beneficial for the collective,
 is often undermined by defection, where individual agents seek short-term gains at
 the expense of collective well-being \cite{axelrod1981}. The Prisoner’s Dilemma (PD) offers a
 fundamental framework for examining such interactions, presenting agents with a
@@ -230,6 +230,19 @@ Our approach confirmed the results of Vukov et al., demonstrating that incipient
 \end{itemize}
 
 
+\subsection{Additional Work}
+
+In order to further extend the depth of the investigation, simulations were 
+implemented and conducted in order to see if the transient period initially 
+stated by Vukov et al. was sufficient for the values of p and q to become
+somewhat stable, or if it was unsufficient, and if sufficient, if it was just
+enough or too much.\\
+These simulations were implemented the following way: a mean value of the
+p and q values of all agents, in a single generation, is computed and added to an
+array containing these said mean values from every generation. Then, as it only
+was used one simulation (and not 10, as in the rest of this experiment, due 
+to the extremely high computational cost), this array is then used for the
+final result that is shown in the next section. 
 
 
 
@@ -269,6 +282,8 @@ adapt their strategies before settling into more stable interaction patterns
     \label{fig:p_q_vs_b}
 \end{figure}
 
+
+
 \subsection{Context and Broader Implications}
 Our results, consistent with those of Vukov et al., reinforce the critical role of cognitive mechanisms in \textbf{sustaining cooperation within spatial networks.Adding elements such as memory-based decision-making and stochastic noise provides a more realistic simulation of real-world dynamics, where agents do not always behave deterministically. While Vukov et al. demonstrated that spatial structure alone can promote cooperation, our findings suggest that cognition-based strategy adaptation further enhances these effects, making cooperation more resilient to variations in temptation to defect.}
 
@@ -286,7 +301,14 @@ While our model successfully replicated the results of Vukov et al. and confirme
 
 Furthermore, the use of Gaussian noise to introduce random mutations in strategy imitation, while valuable for adding variability, may overestimate the frequency and impact of random fluctuations in real-world systems. In practice, agents may not experience mutations as frequently or as randomly as modeled here, potentially leading to an overemphasis on instability in our results. Additionally, our model was limited to a lattice structure, which constrained our ability to explore more complex network topologies, such as small-world or scale-free networks. These structures could offer deeper insights into how different topological arrangements affect cooperation dynamics.
 
-Lastly, our simulations were confined to a specific range of temptation values (\( b \)) and fixed noise levels. While this range provided valuable insights, expanding the parameter space or introducing adaptive noise could provide a more comprehensive understanding of how these factors influence cooperation.
+Another limitation resides in our simulations being confined to a specific range of temptation values (\( b \)) and fixed noise levels. While this range provided valuable insights, expanding the parameter space or introducing adaptive noise could provide a more comprehensive understanding of how these factors influence cooperation.
+
+Lastly, the very high computational cost, in terms of temporal complexity, presents
+a moderate issue. While we could not replicate the methodology of Vukov et al.,
+which used a 100 by 100 lattice, as well as a larger number of simulations intended
+to minimize the variation of the final results, our simulation still presented
+a very approximate result of what we can expect from this kind of model in this
+subject in particular.
 
 \subsection{Future Work and Potential Applications}
 Despite these limitations, our model opens several avenues for future research. Incorporating more sophisticated memory mechanisms into agent decision-making could offer a richer understanding of how long-term interactions shape cooperation. Future studies could explore how agents accumulate trust or mistrust over multiple rounds of interaction, influencing their probability of cooperating or defecting in subsequent games. Moving beyond the single-interaction memory used in our model, the introduction of "reputation," where agents base decisions on both direct interactions and the reputations of their neighbors, could provide deeper insights into the persistence of cooperation in more complex environments.
