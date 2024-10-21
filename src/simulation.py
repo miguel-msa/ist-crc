@@ -9,8 +9,8 @@ import matplotlib.pyplot as plt
 simulation configuration are @ common.py
 '''
 TOTAL_SIMS = 1 #10
-PAYOFFS = [1.001, 1.2, 1.4, 1.6, 1.8, 2.0]
-#PAYOFFS = [1.001, 1.2]
+#PAYOFFS = [1.001, 1.2, 1.4, 1.6, 1.8, 2.0]
+PAYOFFS = [1.001, 1.2]
 
 SIMULATION_RESULTS = {}
 
@@ -184,7 +184,7 @@ def simulate():
             q_avg_simulation_final = []
 
         p_avg_generation = []
-        p_avg_generation = []
+        q_avg_generation = []
         
 
 
