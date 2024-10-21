@@ -8,3 +8,11 @@ report.log
 report.out
 report.pdf
 report.synctex.gz
+
+Report_1.aux
+Report_1.fdb_latexmk
+Report_1.fls
+Report_1.log
+Report_1.out
+Report_1.pdf
+Report_1.synctex.gz
