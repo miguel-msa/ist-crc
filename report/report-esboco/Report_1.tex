@@ -48,7 +48,18 @@ Pedro Baptista\inst{1}\orcidID{96302} \and José Moniz\inst{1}\orcidID{110960}}
 
 
 \begin{abstract}
-The evolution of cooperation in dynamic systems, particularly in distributed networks, is a significant focus in evolutionary game theory. These systems model agent interactions where decisions to cooperate or defect shape long-term network stability. In this study, we replicate and confirm the results of Vukov et al., demonstrating that incipient cognition—the ability of agents to adapt strategies based on prior interactions—significantly enhances cooperation in spatial networks. Through extensive simulations, we observe that incipient cognition fosters cooperation even under high temptation to defect. Our findings highlight the robustness of cooperation when agents employ cognitive strategies, and how factors like noise in strategy adoption do not prevent cooperative behavior. These results reinforce the theoretical predictions and provide strong evidence for applying these models to real-world distributed systems.
+The evolution of cooperation in dynamic systems, particularly in distributed networks,
+is a significant focus in evolutionary game theory. These systems model agent
+interactions where decisions to cooperate or defect shape long-term network stability.
+In this study, we replicate and confirm the results of Vukov et al. \cite{vukov},
+demonstrating that incipient cognition—the ability of agents to adapt
+strategies based on prior interactions—significantly enhances cooperation in spatial networks.
+Through simulations with varying configurations, we observe that incipient cognition fosters
+cooperation even under high temptation to defect. Our findings highlight the
+robustness of cooperation when agents employ cognitive strategies, and how factors
+like noise in strategy adoption do not prevent cooperative behavior.
+These results reinforce the theoretical predictions and provide strong evidence
+for applying these models to real-world scenarios.
 
 TODO:
 \begin{itemize}
@@ -62,22 +73,51 @@ TODO:
 \end{abstract}
 
 
-\begin{itemize}
-    \item What is Incipient Cognition
-\end{itemize}
-
 
 \section{Introduction}
 
 \subsection{Background}
 
-\begin{itemize}
-    \item Prisioner's Dilemma
-    \item Direct Reciprocity
-    \item Cooperation in homogeneous worls + Spatial Reciprocity
-    \item Different Tensions, different dilemmas
-    \item Homogeneous VS heterogeneous networks (+ role of heterogeneity)
-\end{itemize}
+
+\textbf{Prisoner's Dilemma} is one of the Metaphors for understanding the evolution of cooperation
+in multiple fields like economics, evolutionary biology, computer science, etc \cite{mm2024}.
+The rational goal is for an individual to maximize its own payoff however, facing a
+dilemma: although mutual cooperation is better than mutual defection, individual rational
+choice leads to mutual defection. Yet, cooperation surrounds us and is the most suited
+strategy in some cases like in evolutionary biology. The takeaway is, assuming
+an infinite population: the strategy whose fitness exceeds the average fitness
+of the population will increase in frequency otherwise, the strategies that do not,
+decline \cite{mm2024}. Furthermore, the choice of cooperation versus defection are
+subject to changing probabilities, as different cost-to-payoff matrices lead to
+different dilemmas of cooperation, i.e., temptation to defect.
+This will also be observed from this study.
+
+\textbf{Direct Reciprocity} is concerned with the positive action from Agent 1
+to Agent 2, and Agent's 2 positive reciprocity, i.e., mutual cooperation.
+
+\textbf{Incipient Cognition} is the capability to recall past actions and is
+a pilar for direct reciprocity, as direct reciprocity
+relies on the individual's experience and memory.
+
+\textbf{Regular Lattices} are characterized by their regular structure and fixed
+number of neighbors. These were used in this study, more precisely,
+2D grid lattices, meaning k neighbors, where k=4. This regular topology is of relevance
+for the conclusions gathered regarding spatial reciprocity.
+
+\textbf{An Homogeneous Network} is a the kind of network produced by 2D
+grid lattices. This means that all agents are equally connected, i.e.,
+interaction and influence is distributed evenly, and this is also
+another characteristic that promotes cooperating clusters that can shield themselves
+from defectors.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.4\textwidth]{payoffmatrix.png}
+    \caption{Prisoner's Dilemma Payoff Matrix}
+    \label{fig:coop_vs_b}
+\end{figure}
+
+
 
 \subsection{Motivation and Related Work}
 The evolution of cooperation in dynamic systems is a central question in evolutionary
@@ -106,13 +146,14 @@ otherwise dominate. Vukov et al. demonstrated that incorporating these cognitive
 abilities into agents' decision-making processes led to robust cooperation,
 even under conditions of high temptation to defect.
 
-In this study, we replicate and extend the findings of Vukov et al., confirming the impact of incipient cognition on the evolution of cooperation in spatial networks. \textbf{By introducing slight refinements in the cognitive decision-making processes and incorporating stochastic variations in strategy adoption} , we aimed to explore the robustness of cooperation in dynamic systems further. Our results align with the theoretical predictions, demonstrating that agents employing incipient cognition maintain high levels of cooperation, even under significant temptation to defect.
-
-TODO:
-\begin{itemize}
-    \item (improve) motivation \& related work
-\end{itemize}
-
+In this study, we replicate and extend the findings of Vukov et al. \cite{vukov},
+confirming the impact of incipient cognition on the evolution of cooperation in
+spatial networks and by implementing the studied paper, we further explore the
+robustness of cooperation in heterogeneous networks where agents have incipient cognition
+and dynamic systems.
+Our results align with the theoretical predictions, demonstrating that agents
+employing incipient cognition maintain high levels of cooperation, even under
+significant temptation to defect.
 
 \section{Methods/Model}
 
@@ -136,18 +177,14 @@ previous interactions, leading to the formation of robust cooperative clusters e
 under conditions of temptation.
 
 
-TODO
-\begin{itemize}
-    \item Explain what is spatial structure
-\end{itemize}
-
 \subsection{Our Approach: Implementation and Simulation Setup}
 
-To replicate and further examine the role of cognitive adaptation in promoting cooperation, we implemented a model that builds upon the framework established by Vukov et al. \textbf{While their model already utilized fitness-based strategy evolution, incorporating cognitive parameters, we refined the cognitive decision-making processes to explore their impact in greater detail.}
+To replicate and further examine the role of cognitive adaptation in promoting
+cooperation, we implemented a model that builds upon the framework established
+by Vukov et al. \cite{vukov}.
 
-Each agent in our model was defined by two evolving parameters:
-
-\textbf{TODO: colocar imagem de p e q descritivo como no paper}
+Each agent in our implementation, similarly to the referenced paper, was defined by
+two evolving parameters:
 
 \[
 p: \text{Probability of cooperating after a cooperative interaction.}
@@ -157,7 +194,29 @@ p: \text{Probability of cooperating after a cooperative interaction.}
 q: \text{Probability of cooperating after a defecting interaction.}
 \]
 
-These parameters were updated as agents interacted with their neighbors, allowing for a dynamic adjustment of strategies based on the outcome of previous interactions. \textbf{Additionally, we introduced stochastic noise in the imitation process, simulating small random fluctuations in the values of \( p \) and \( q \). This noise added an element of variability to the agents' decision-making, reflecting more realistic cognitive decision-making processes compared to purely deterministic models.}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.4\textwidth]{modellingindividualcognition.png}
+    \caption{Individual cognition model (in Results and Discussion of \cite{vukov})}
+    \label{fig:coop_vs_b}
+\end{figure}
+
+These parameters were updated as agents interacted with their neighbors, allowing
+for a dynamic adjustment of strategies based on the outcome of previous interactions.
+The evolution happened in each simulation time step,
+i.e., after each agent-to-agent play and was applied by picking two random
+neighboring players (x and y). The adoption strategy happens with a probability
+given by $W(x \leftarrow y) = \frac{1}{1 + e^{(P_x - P_y)/k}}$, where $P_x$ and $P_y$
+are the fitness of agents x and y, and $K$ represents errors in decision making,
+where the value used was 4, like in Vukov et al. \cite{vukov}.
+Additionally, we also introduced stochastic noise whenever the agent x is
+adopting the strategy of agent y, simulating small random fluctuations in the
+values of \( p \) and \( q \).
+This noise added an element of variability to the agents' decision-making,
+reflecting more realistic cognitive decision-making processes compared to
+purely deterministic models.
+
 
 \textbf{TODO: reformulate/add/improve on the simulations done - how much, each config, ...}
 Simulations were conducted on a \( 50 \times 50 \) lattice, with each agent interacting with its four nearest neighbors (Von Neumann neighborhood). We systematically varied the temptation to defect, denoted by \( b \), across multiple simulation runs to assess the sensitivity of cooperation to this parameter. Each simulation ran for 25,000 generations, with a transient period included to allow the system to stabilize before data collection.
@@ -194,7 +253,12 @@ One of the key findings from our simulations is the importance of cognitive stra
 As expected, when the temptation parameter \( b \) ranged from 1.4 to 2.0, cooperation levels began to decline, \textbf{and defectors gradually overtook the network. (corr.: they did not overtake...)} While higher values of \( b \) naturally incentivize defection, the decline in cooperation was gradual and followed the trends observed in Vukov's results. \textbf{This demonstrates that cognitive adaptation, even when paired with stochastic noise, can sustain cooperation under moderate temptation but faces challenges as \( b \) increases further. (corr.: explain more about this rationale)}
 
 \subsection{Additional Findings}
-Our simulations also \textbf{revealed (corr.: observed)}the significance of the transient period in the evolution of cooperation. Early in the simulations, bursts of cooperation were observed before the system stabilized at higher levels of cooperation. \textbf{This transient behavior indicates that agents need time to explore and adapt their strategies before settling into more stable interaction patterns (corr.: explore this more)} , a phenomenon also noted by Vukov et al.
+Our simulations also observed the significance of the transient period in the evolution
+of cooperation. Early in the simulations, bursts of cooperation were observed
+before the system stabilized at higher levels of cooperation.
+\textbf{This transient behavior indicates that agents need time to explore and
+adapt their strategies before settling into more stable interaction patterns
+(corr.: explore this more)} , a phenomenon also noted by Vukov et al. \cite{vukov}.
 
 \textbf{Furthermore, the cognitive memory mechanisms in our model—where agents adjust their strategies based on previous interactions—introduced a level of complexity that goes beyond simpler models. (corr.: this is not ours, is taken from the paper)}  Cooperative bonds were maintained for longer periods in environments with lower temptation values, but as \( b \) increased, the accumulated noise began to affect these bonds. This finding emphasizes the trade-off between adaptability and stability, where cognitive mechanisms allow for flexible decision-making but can also introduce new challenges in maintaining long-term cooperation.
 
