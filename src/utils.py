@@ -105,3 +105,31 @@ class SimulationResult():
 
     def getAvgQ(self):
         return self.q/self.total_sims
+    
+
+'''
+class ExtraSimulationResult():
+    def __init__(self, total_generations: int, total_sims: int, p: dict, q: dict):
+        self.total_generations = total_generations
+        self.total_sims = total_sims
+        self.p = p
+        self.q = q
+
+    def getAvgP_Generations(self):
+
+        p_total = []
+
+        for i in self.total_generations:
+            for j in len(self.p):
+                p_total += self.p[i]
+
+        
+
+
+    def getAvgQ_Generations(self):
+
+    def getAvgP_Sims(self):
+    
+    def getAvgQ_Sims(self):
+
+'''
