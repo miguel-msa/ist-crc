@@ -216,7 +216,7 @@ purely deterministic models.
 
 Simulations were conducted on a \( 30 \times 30 \) lattice, with each agent interacting
 with its direct nearest neighbors (Von Neumann neighborhood). We systematically
-varied the temptation to defect, denoted by \( b \) (b$=$\{1.0, 1.2, 1.4, 1.6, 1.8, 2.0\}), across multiple simulation
+varied the temptation to defect, denoted by \( b \) (b$=$\{1.001, 1.2, 1.4, 1.6, 1.8, 2.0\}), across multiple simulation
 runs to assess the sensitivity of cooperation to this parameter. Each simulation
 ran for 25,000 generations, with a transient period included to allow the system
 to stabilize before data collection. The transient period used was $latticeSize^2$,
@@ -264,7 +264,7 @@ One of the key findings from our simulations is the importance of cognitive stra
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{cooperation_vs_b.png}
+    \includegraphics[width=0.6\textwidth]{cooperation_vs_b.png}
     \caption{Average Cooperation as a function of the temptation to defect (\( b \)). The plot shows how cooperation
     levels decrease as \( b \) increases, with significant drops when \( b > 1.2 \).}
     \label{fig:coop_vs_b}
@@ -285,7 +285,25 @@ before the system stabilized at higher levels of cooperation.
 This transient behavior indicates that agents need time to explore and
 adapt their strategies before settling into more stable interaction patterns
 , a phenomenon also noted by Vukov et al. \cite{vukov}.
+This was explored, as said previously, in our work, and the results were the following:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{avg_p_q_b-1.001.png}
+    \caption{Average p and q over all generations, with b = 1.001}
+    \label{fig:avg_p_q_b-1.001}
+\end{figure}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{avg_p_q_b-2.0.png}
+    \caption{Average p and q over all generations, with b = 2.0}
+    \label{fig:avg_p_q_b-2.0}
+\end{figure}
+As we can conclude from \textbf{Fig. 4}, the verifiable transient period ends
+somewhere between 1000 generations and 2000 generations. As for \textbf{Fig. 5},
+the transient period ends at around 2000 generations, therefore, it appears that
+the transient period of 900 generations used in Vukov et al., and
+also in our model, was a bit short, but did not impact severely our results.\\
 Furthermore, the cognitive memory mechanisms in the model where agents
 adjust their strategies based on
 previous interactions introduced a level of complexity that goes beyond models with
@@ -298,7 +316,7 @@ introduce new challenges in maintaining long-term cooperation.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{p_q_vs_b.png}
+    \includegraphics[width=0.6\textwidth]{p_q_vs_b.png}
     \caption{Average values of \( p \) (probability of cooperating after cooperation)
     and \( q \) (probability of cooperating after defection) as a function of \( b \).
     As \( b \) increases, both \( p \) and \( q \) decrease, reflecting a
@@ -311,6 +329,8 @@ p and q to decrease as b increases, i.e., temptation to defect increases. At b=1
 and b=2.0 we can see an increase on p and q, which is contrary to the expected behavior.
 We can depict this result as an error in the simulation, and we believe that
 by running more simulations, this contrary behavior would be rectified.
+
+
 
 
 

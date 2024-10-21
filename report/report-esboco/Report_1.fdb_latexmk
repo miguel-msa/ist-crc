@@ -1,9 +1,11 @@
 # Fdb version 4
-["pdflatex"] 1729474805.32963 "c:/Users/pedro/Documentos/IST/6.º_1.º Mestrado/CRC/Projeto/ist-crc/report/report-esboco/Report_1.tex" "Report_1.pdf" "Report_1" 1729474807.92748 0
-  "Report_1.aux" 1729474807 4600 c36b15a795a0b1da901ee8e410c108e7 "pdflatex"
-  "Report_1.out" 1729474807 177 6fb56f447d7c73a98719c6bfbc42d08c "pdflatex"
-  "Report_1.tex" 1729474800 23635 42eba26b3e608895807a7161f201a3fd ""
-  "c:/Users/pedro/Documentos/IST/6.º_1.º Mestrado/CRC/Projeto/ist-crc/report/report-esboco/Report_1.tex" 1729474800 23635 42eba26b3e608895807a7161f201a3fd ""
+["pdflatex"] 1729524818.6152 "c:/Users/pedro/Documentos/IST/6.º_1.º Mestrado/CRC/Projeto/ist-crc/report/report-esboco/Report_1.tex" "Report_1.pdf" "Report_1" 1729524821.77554 0
+  "Report_1.aux" 1729524821 5240 af125b9c2daaefa243925d9340d4df64 "pdflatex"
+  "Report_1.out" 1729524821 177 6fb56f447d7c73a98719c6bfbc42d08c "pdflatex"
+  "Report_1.tex" 1729524814 24618 6058b2a45f522282308672f7ab0536f7 ""
+  "avg_p_q_b-1.001.png" 1729518209 23726 4d0f9c633779b9a143f9d2a060a4b7f0 ""
+  "avg_p_q_b-2.0.png" 1729518222 24121 77b58856c75df4fb1bba0fb910341e6c ""
+  "c:/Users/pedro/Documentos/IST/6.º_1.º Mestrado/CRC/Projeto/ist-crc/report/report-esboco/Report_1.tex" 1729524814 24618 6058b2a45f522282308672f7ab0536f7 ""
   "c:/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1727625459 2971 def0b6c1f0b107b3b936def894055589 ""
   "c:/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1727625459 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "c:/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1727627312 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -33,7 +35,6 @@
   "c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb" 1727623658 36094 798f80770b3b148ceedd006d487db67c ""
   "c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1727623658 35752 024fb6c41858982481f6968b5fc26508 ""
   "c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb" 1727623658 31809 8670ca339bf94e56da1fc21c80635e2a ""
-  "c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb" 1727623658 32734 69e00a6b65cedb993666e42eedb3d48f ""
   "c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb" 1727623658 32762 7fee39e011c23b3589931effd97b9702 ""
   "c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb" 1727623658 33993 9b89b85fd2d9df0482bd47194d1d3bf3 ""
   "c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1727623658 32569 5e5ddc8df908dea60932f3c484a54c0d ""

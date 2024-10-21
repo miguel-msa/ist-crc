@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.29)  21 OCT 2024 02:40
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.29)  21 OCT 2024 16:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -489,49 +489,66 @@ Package hyperref Info: Link coloring OFF on input line 26.
 \openout3 = `Report_1.out'.
 
 \c@lstlisting=\count341
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 46.
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 47.
  (c:/texlive/2024/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
 <payoffmatrix.png, id=14, 203.3196pt x 68.6565pt>
 File: payoffmatrix.png Graphic file (type png)
 <use payoffmatrix.png>
-Package pdftex.def Info: payoffmatrix.png  used on input line 115.
+Package pdftex.def Info: payoffmatrix.png  used on input line 108.
 (pdftex.def)             Requested size: 188.8096pt x 63.75871pt.
 
 
 [1
 
-{c:/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{c:/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{c:/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
-
-[2 <./payoffmatrix.png>]
-<modellingindividualcognition.png, id=68, 277.78781pt x 292.84406pt>
+{c:/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{c:/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{c:/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc} <./payoffmatrix.png>]
+<modellingindividualcognition.png, id=57, 277.78781pt x 292.84406pt>
 File: modellingindividualcognition.png Graphic file (type png)
 <use modellingindividualcognition.png>
-Package pdftex.def Info: modellingindividualcognition.png  used on input line 200.
+Package pdftex.def Info: modellingindividualcognition.png  used on input line 196.
 (pdftex.def)             Requested size: 188.8096pt x 199.04642pt.
 
 
+[2]
+Underfull \vbox (badness 3623) has occurred while \output is active []
+
+
+
 [3 <./modellingindividualcognition.png>]
-<cooperation_vs_b.png, id=86, 578.16pt x 433.62pt>
+<cooperation_vs_b.png, id=92, 578.16pt x 433.62pt>
 File: cooperation_vs_b.png Graphic file (type png)
 <use cooperation_vs_b.png>
-Package pdftex.def Info: cooperation_vs_b.png  used on input line 261.
-(pdftex.def)             Requested size: 330.42041pt x 247.81438pt.
-<p_q_vs_b.png, id=89, 578.16pt x 433.62pt>
+Package pdftex.def Info: cooperation_vs_b.png  used on input line 267.
+(pdftex.def)             Requested size: 283.22162pt x 212.4161pt.
+<avg_p_q_b-1.001.png, id=97, 462.528pt x 346.896pt>
+File: avg_p_q_b-1.001.png Graphic file (type png)
+<use avg_p_q_b-1.001.png>
+Package pdftex.def Info: avg_p_q_b-1.001.png  used on input line 291.
+(pdftex.def)             Requested size: 283.22162pt x 212.42668pt.
+
+
+[4 <./cooperation_vs_b.png>]
+<avg_p_q_b-2.0.png, id=110, 462.528pt x 346.896pt>
+File: avg_p_q_b-2.0.png Graphic file (type png)
+<use avg_p_q_b-2.0.png>
+Package pdftex.def Info: avg_p_q_b-2.0.png  used on input line 298.
+(pdftex.def)             Requested size: 283.22162pt x 212.42668pt.
+
+
+[5 <./avg_p_q_b-1.001.png> <./avg_p_q_b-2.0.png>]
+<p_q_vs_b.png, id=119, 578.16pt x 433.62pt>
 File: p_q_vs_b.png Graphic file (type png)
 <use p_q_vs_b.png>
-Package pdftex.def Info: p_q_vs_b.png  used on input line 280.
-(pdftex.def)             Requested size: 330.42041pt x 247.81438pt.
+Package pdftex.def Info: p_q_vs_b.png  used on input line 319.
+(pdftex.def)             Requested size: 283.22162pt x 212.4161pt.
 
 
-[4]
+[6 <./p_q_vs_b.png>]
 
-[5 <./cooperation_vs_b.png> <./p_q_vs_b.png>]
+[7]
 
-[6]
-
-[7] (./Report_1.aux)
+[8] (./Report_1.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-09-10>
@@ -544,18 +561,18 @@ Package rerunfilecheck Info: File `Report_1.out' has not changed.
 (rerunfilecheck)             Checksum: 6FB56F447D7C73A98719C6BFBC42D08C;177.
  ) 
 Here is how much of TeX's memory you used:
- 11854 strings out of 473579
- 178907 string characters out of 5732263
- 598506 words of memory out of 5000000
- 34575 multiletter control sequences out of 15000+600000
+ 11872 strings out of 473579
+ 179273 string characters out of 5732263
+ 597656 words of memory out of 5000000
+ 34590 multiletter control sequences out of 15000+600000
  569143 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,6n,79p,841b,447s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx0900.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sftt0900.pfb>
-Output written on Report_1.pdf (7 pages, 383576 bytes).
+ 75i,7n,79p,841b,585s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx0900.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sftt0900.pfb>
+Output written on Report_1.pdf (8 pages, 413547 bytes).
 PDF statistics:
- 217 PDF objects out of 1000 (max. 8388607)
- 146 compressed objects within 2 object streams
- 38 named destinations out of 1000 (max. 500000)
- 29 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 235 PDF objects out of 1000 (max. 8388607)
+ 155 compressed objects within 2 object streams
+ 41 named destinations out of 1000 (max. 500000)
+ 39 words of extra memory for PDF output out of 10000 (max. 10000000)
 
