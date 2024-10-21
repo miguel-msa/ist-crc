@@ -183,6 +183,11 @@ def simulate():
             p_avg_simulation_final = []
             q_avg_simulation_final = []
 
+        p_avg_generation = []
+        p_avg_generation = []
+        
+
+
 
 
 
