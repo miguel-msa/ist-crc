@@ -1,8 +1,19 @@
 # IST - Network Science
 
-# TODO
+## Repository General Description
 
--   "Given the multitude of third-party libraries you may use, it would be very helpful if you add a readme file with an overview of the code, dependencies, configuration/installatio"
+`agent.py`: 
+- describes an agent that is also a node in the lattice
+- includes all the state and functionalities of an agent
+
+`utils.py`:
+- includes initialization, util/helper, and debugging functions
+
+`common.py`:
+- contains parameters shared throughout the code
+
+`simmulation.py`
+- the project's building blocks together resulting in the run of a simulation, from initializations and logic, to the final results
 
 ## Requirements
 
