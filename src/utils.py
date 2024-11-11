@@ -44,7 +44,6 @@ def init_lattice(agents: list[Agent]) -> nx.Graph:
     return G
 
 
-# todo: review this payoff matrix and the way it is calculated!
 def distribute_payoff(x_choice, y_choice):
     cost = SIMULATION_PARAMS['c']
     payoff = SIMULATION_PARAMS['b']
@@ -61,23 +60,11 @@ def distribute_payoff(x_choice, y_choice):
 
 def pick_two_random_neighboring_nodes(G):
     random_node = tuple(int(x) for x in RANDOM_SEEDED.choice(list(G.nodes)))
-    #print(f'Selected random node: {random_node}')
-    # random_node_idx = RANDOM_SEEDED.integers(0, len(G.nodes))
-
-    # 🐛 : understand bug here
-    # print(G.nodes)
-    # print('neighbors...')
-    # print(list(nx.all_neighbors(G, (0,0))))
-    # print('----')
     neighbors = list(G.neighbors(random_node))
-
-    #print('NEIGHBORS')
-    #print(neighbors)
 
     neighbor_index = RANDOM_SEEDED.choice(len(neighbors))
     neighbor = neighbors[neighbor_index]
 
-    #print(f'will return {random_node} and {neighbor}')
     return random_node, neighbor
 
 def draw_graph(g: nx.Graph):
@@ -105,31 +92,3 @@ class SimulationResult():
 
     def getAvgQ(self):
         return self.q/self.total_sims
-    
-
-'''
-class ExtraSimulationResult():
-    def __init__(self, total_generations: int, total_sims: int, p: dict, q: dict):
-        self.total_generations = total_generations
-        self.total_sims = total_sims
-        self.p = p
-        self.q = q
-
-    def getAvgP_Generations(self):
-
-        p_total = []
-
-        for i in self.total_generations:
-            for j in len(self.p):
-                p_total += self.p[i]
-
-        
-
-
-    def getAvgQ_Generations(self):
-
-    def getAvgP_Sims(self):
-    
-    def getAvgQ_Sims(self):
-
-'''

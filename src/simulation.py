@@ -5,11 +5,11 @@ from common import SEED
 import matplotlib.pyplot as plt
 
 '''
-# for the simulation divide by a factor of 10 everything (lattice: 10x10; 1000 generations; 10000 generations to follow, transient period: 500 generations)
+# project configs compared to reference paper -> for the simulation divide by a factor of 10 everything (lattice: 10x10; 1000 generations; 10000 generations to follow, transient period: 500 generations)
 simulation configuration are @ common.py
 '''
 TOTAL_SIMS = 1 #10
-#PAYOFFS = [1.001, 1.2, 1.4, 1.6, 1.8, 2.0]
+#PAYOFFS = [1.001, 1.2, 1.4, 1.6, 1.8, 2.0] # all values used in our simulations to obtain results
 PAYOFFS = [1.001, 1.2]
 
 SIMULATION_RESULTS = {}
@@ -96,27 +96,6 @@ def simulate():
                 p_avg_in_generation = 0
                 q_avg_in_generation = 0
 
-
-            '''
-            # randomly pick 2 neighbors to, with a probability, adopt the strategy of the other
-            node_x, node_y = pick_two_random_neighboring_nodes(G)
-
-                    node_x_agent: Agent = G.nodes[node_x]['agent']
-                    node_y_agent: Agent = G.nodes[node_y]['agent']
-
-            node_x_agent.adopt_strategy(node_y_agent.fitness, node_y_agent.p, node_y_agent.q)
-            '''
-
-            '''
-            for node in G.nodes:
-                agent: Agent = G.nodes[node]['agent']
-                if agent.fitness < 0:
-                    agent.fitness = 0
-            '''
-
-            #node_x_agent.fitness = 0
-            #node_y_agent.fitness = 0
-
             for agent in agents:
                 print(f'''Agent {agent.id} with
                       fitness {agent.fitness}, p: {agent.p}, q: {agent.q}''')
@@ -158,7 +137,6 @@ def simulate():
                     for iter in range(TOTAL_SIMS):
                         p_final_iter_sum += p_avg_simulation[iter][gen]
                         q_final_iter_sum += q_avg_simulation[iter][gen]
-                        #print("AQUI: ", p_avg_simulation_final)
                     p_avg_simulation_final.append(p_final_iter_sum / TOTAL_SIMS)
                     q_avg_simulation_final.append(q_final_iter_sum / TOTAL_SIMS)
                     p_final_iter_sum = 0
@@ -172,12 +150,6 @@ def simulate():
         elif b == PAYOFFS[-1]:
             EXTRA_SIMULATION_RESULTS_P[1] = p_avg_simulation_final
             EXTRA_SIMULATION_RESULTS_Q[1] = q_avg_simulation_final
-        '''
-        else:
-            print(b)
-            print("Isto não é suposto acontecer")
-            exit()
-        '''
             
         for sim_iteration in range(TOTAL_SIMS):
             p_avg_simulation_final = []
@@ -186,10 +158,6 @@ def simulate():
         p_avg_generation = []
         q_avg_generation = []
         
-
-
-
-
 
     avg_coop_arr = list()
     for k, sim_result in SIMULATION_RESULTS.items():
@@ -254,9 +222,5 @@ def simulate():
     plt.show()
 
 
-
-
 if __name__ == '__main__':
     simulate()
-
-

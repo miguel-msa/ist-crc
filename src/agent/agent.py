@@ -9,7 +9,7 @@ class Agent:
         self.id = id
         self.p = p
         self.q = q
-        self.fitness = 0 # todo: increase on every game
+        self.fitness = 0
         self.last_play_by_neighbor: Dict[int, NeighborPlay] = {}
         self.playing_round = 0
         self.play_flag = 0
@@ -31,7 +31,6 @@ class Agent:
             self.store_neighbor_choice(neighbor_agent.id, y_choice)
             neighbor_agent.store_neighbor_choice(self.id, x_choice)
 
-            # todo: check if this return is handling correctly assigning the payoff to the agents
             from utils import distribute_payoff
             self_payoff, neighbor_payoff = distribute_payoff(x_choice, y_choice)
             self.fitness += self_payoff
@@ -79,9 +78,6 @@ class Agent:
                 return 'D'
 
 
-
-
-    # todo: this is only used in the first round due to lack of information
     def first_response(self) -> Literal['C', 'D']:
         return 'C' if RANDOM_SEEDED.random() < (self.p + self.q)/2 else 'D'
 
@@ -96,13 +92,8 @@ class Agent:
         adoption_probability = 1/(1 + np.exp((self.fitness - fitness_y)/SIMULATION_PARAMS['K']))
 
         if RANDOM_SEEDED.random() < adoption_probability:
-            xi_1 = RANDOM_SEEDED.normal(0, SIMULATION_PARAMS['SIGMA']) # Mean 0, standard deviation sigma
+            xi_1 = RANDOM_SEEDED.normal(0, SIMULATION_PARAMS['SIGMA'])
             xi_2 = RANDOM_SEEDED.normal(0, SIMULATION_PARAMS['SIGMA'])
-
-            # if (p_y < 0 or xi_1 < 0):
-            #     print(f'p_y: {p_y} | xi_1: {xi_1}')
-            # if (q_y < 0 or xi_2 < 0):
-            #     print(f'q_y: {q_y} | xi_2: {xi_2}')
 
             self.p = p_y + xi_1
             if(self.p > 1):
